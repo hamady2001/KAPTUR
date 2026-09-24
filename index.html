@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaptur — Plateforme pour Photographes Professionnels</title>
+  <meta name="description" content="Présentez vos travaux, partagez des galeries clients sécurisées, gérez vos factures et rejoignez la communauté Pro Kaptur.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'bg-main': '#090D14',
+            'bg-surface': '#121824',
+            'bg-surface-subtle': '#1A2232',
+            'bg-surface-hover': '#222C3E',
+            'border-subtle': 'rgba(255, 255, 255, 0.08)',
+            'border-strong': 'rgba(255, 255, 255, 0.16)',
+            'accent': '#38BDF8',
+            'accent-hover': '#0EA5E9',
+            'gold': '#F59E0B',
+            'muted-text': '#94A3B8',
+            'subtle-text': '#64748B'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- html2pdf.js for direct PDF file generation & downloads -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  
+  <!-- Custom CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="bg-[#090D14] text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- Shell Wrapper -->
+  <div id="app-shell" class="min-h-screen flex flex-col md:flex-row">
+    
+    <!-- Desktop Sidebar Navigation (Hidden in public mode / client portal) -->
+    <aside id="main-sidebar" class="sidebar flex flex-col justify-between hidden">
+      <div class="sidebar-top">
+        <!-- Logo (Returns to Landing Page) -->
+        <a href="#landing" id="app-logo-btn" class="logo-container flex items-center gap-3 px-4 py-5 border-b border-white/10 hover:opacity-85 transition-opacity" title="Retour à l'accueil Kaptur">
+          <div class="logo-icon bg-sky-400 text-slate-950 flex items-center justify-center rounded-lg font-bold text-xl w-9 h-9">K</div>
+          <span class="logo-text font-bold text-xl tracking-tight text-white">KAPTUR</span>
+          <span id="sidebar-pro-badge" class="badge badge-pro hidden">PRO</span>
+        </a>
+
+        <!-- Main Navigation Links -->
+        <nav class="nav-menu px-3 py-4 space-y-1">
+          <a href="#dashboard" class="nav-item" data-route="dashboard">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Tableau de bord</span>
+          </a>
+          <a href="#galleries" class="nav-item" data-route="galleries">
+            <i data-lucide="image"></i>
+            <span>Galeries & Photos</span>
+          </a>
+          <a href="#search" class="nav-item" data-route="search">
+            <i data-lucide="users"></i>
+            <span>Photographes Pro</span>
+          </a>
+          <a href="#community" class="nav-item" data-route="community">
+            <i data-lucide="message-square"></i>
+            <span>Communauté Pro</span>
+            <span id="unread-dms-badge" class="badge badge-accent ml-auto hidden">0</span>
+          </a>
+          <a href="#invoices" class="nav-item" data-route="invoices">
+            <i data-lucide="file-text"></i>
+            <span>Factures</span>
+          </a>
+          <a href="#notifications" class="nav-item" data-route="notifications">
+            <i data-lucide="bell"></i>
+            <span>Notifications</span>
+            <span id="unread-notifs-badge" class="badge badge-accent ml-auto hidden">0</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Bottom Menu -->
+      <div class="sidebar-bottom p-3 border-t border-white/10 space-y-1">
+        <a href="#subscription" class="nav-item" data-route="subscription">
+          <i data-lucide="zap"></i>
+          <span>Abonnement</span>
+          <span id="plan-label" class="badge badge-outline ml-auto">Standard</span>
+        </a>
+        <a href="#profile" class="nav-item" data-route="profile">
+          <i data-lucide="user"></i>
+          <span>Mon Profil Pro</span>
+        </a>
+        
+        <!-- User Quick Card -->
+        <div id="user-quick-card" class="user-card flex items-center justify-between p-2 mt-2 rounded-xl bg-slate-900 border border-white/10">
+          <div class="flex items-center gap-3 overflow-hidden">
+            <img id="sidebar-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="avatar avatar-sm">
+            <div class="truncate">
+              <div id="sidebar-user-name" class="font-semibold text-sm truncate text-white">Julien Mercer</div>
+              <div id="sidebar-user-role" class="text-xs text-slate-400 truncate">Photographe Studio</div>
+            </div>
+          </div>
+          <button id="btn-logout" class="btn-icon btn-ghost text-slate-400 hover:text-red-400" title="Déconnexion">
+            <i data-lucide="log-out"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Header Navigation for Landing / Public Views -->
+    <header id="main-header" class="header-public fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-[#090D14]/90 border-b border-white/10">
+      <a href="#landing" class="flex items-center gap-3">
+        <div class="logo-icon bg-sky-400 text-slate-950 flex items-center justify-center rounded-lg font-bold text-lg w-9 h-9">K</div>
+        <span class="font-bold text-xl tracking-tight text-white">KAPTUR</span>
+      </a>
+      
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#landing" class="hover:text-sky-400 transition-colors">Accueil</a>
+        <a href="#landing#features" class="hover:text-sky-400 transition-colors">Fonctionnalités</a>
+        <a href="#search" class="hover:text-sky-400 transition-colors">Annuaire Pro</a>
+        <a href="#landing#pricing" class="hover:text-sky-400 transition-colors">Tarifs</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#auth" class="btn btn-ghost text-sm text-slate-300 hover:text-white">Connexion</a>
+        <a href="#auth?tab=register" class="btn btn-primary text-sm">Créer un compte</a>
+      </div>
+    </header>
+
+    <!-- Mobile Top Header for Logged-In App Views (Hidden on Desktop) -->
+    <header id="mobile-top-header" class="mobile-header sticky top-0 left-0 right-0 z-30 flex md:hidden items-center justify-between px-4 py-3 bg-[#121824]/95 backdrop-blur-md border-b border-white/10 hidden">
+      <a href="#dashboard" class="flex items-center gap-2">
+        <div class="logo-icon bg-sky-400 text-slate-950 flex items-center justify-center rounded-lg font-bold text-sm w-7 h-7">K</div>
+        <span class="font-bold text-lg tracking-tight text-white">KAPTUR</span>
+        <span id="mobile-pro-badge" class="badge badge-pro hidden text-[10px] px-1.5 py-0.5">PRO</span>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a href="#notifications" class="relative p-1.5 text-slate-400 hover:text-white transition-colors">
+          <i data-lucide="bell" class="w-5 h-5"></i>
+          <span id="mobile-unread-notifs-badge" class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-sky-500 text-white text-[9px] font-bold flex items-center justify-center hidden">0</span>
+        </a>
+        <a href="#profile" class="flex items-center">
+          <img id="mobile-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="w-7 h-7 rounded-full object-cover border border-sky-500/50">
+        </a>
+      </div>
+    </header>
+
+    <!-- Main View Content Area -->
+    <main id="app-view" class="flex-1 w-full min-h-screen">
+      <!-- Dynamic views rendered here by app.js -->
+    </main>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav id="mobile-bottom-nav" class="mobile-nav fixed bottom-0 left-0 right-0 z-40 bg-[#121824]/95 backdrop-blur-lg border-t border-white/10 flex justify-around py-2 px-1 md:hidden hidden">
+      <a href="#dashboard" class="mobile-nav-item" data-route="dashboard">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Accueil</span>
+      </a>
+      <a href="#galleries" class="mobile-nav-item" data-route="galleries">
+        <i data-lucide="image"></i>
+        <span>Galeries</span>
+      </a>
+      <a href="#search" class="mobile-nav-item" data-route="search">
+        <i data-lucide="search"></i>
+        <span>Recherche</span>
+      </a>
+      <a href="#community" class="mobile-nav-item" data-route="community">
+        <i data-lucide="message-square"></i>
+        <span>Pro DM</span>
+      </a>
+      <a href="#profile" class="mobile-nav-item" data-route="profile">
+        <i data-lucide="user"></i>
+        <span>Profil</span>
+      </a>
+    </nav>
+
+    <!-- Global Modal Overlay Container -->
+    <div id="modal-container" class="modal-overlay hidden">
+      <div id="modal-content" class="modal-card">
+        <!-- Modal content dynamically injected -->
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Standard JS Script (no module CORS restriction on file://) -->
+  <script src="js/app.js"></script>
+</body>
+</html>
