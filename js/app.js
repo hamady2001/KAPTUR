@@ -15,7 +15,7 @@
 
     toast = document.createElement('div');
     toast.id = 'custom-app-toast';
-    toast.className = 'fixed top-5 right-5 z-[9999] transition-all duration-300 transform translate-y-0 opacity-100 max-w-md pointer-events-auto';
+    toast.className = 'fixed top-4 left-4 right-4 sm:left-auto sm:right-5 sm:max-w-md z-[9999] transition-all duration-300 transform translate-y-0 opacity-100 pointer-events-auto';
 
     const isSuccess = type === 'success';
     const isWarning = type === 'warning' || type === 'amber';
@@ -1177,7 +1177,7 @@
     if (!container) {
       container = document.createElement('div');
       container.id = 'toast-container';
-      container.className = 'fixed bottom-6 right-6 z-[120] flex flex-col gap-3 pointer-events-none max-w-sm w-full px-4';
+      container.className = 'fixed bottom-20 sm:bottom-6 left-4 right-4 sm:left-auto sm:right-6 z-[120] flex flex-col gap-3 pointer-events-none max-w-sm w-auto';
       document.body.appendChild(container);
     }
 
@@ -1498,7 +1498,7 @@
     ];
 
     modal.innerHTML = `
-      <div class="modal-card max-w-2xl bg-[#121824] border border-white/20 p-8 space-y-6 shadow-2xl">
+      <div class="modal-card max-w-2xl bg-[#121824] border border-white/20 p-4 sm:p-8 space-y-4 sm:space-y-6 shadow-2xl">
         <div class="flex items-center justify-between border-b border-white/10 pb-4">
           <div class="flex items-center gap-2">
             <span class="badge badge-pro">PRO VÉRIFIÉ</span>
@@ -1509,27 +1509,27 @@
           </button>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
           <img src="${pro.avatar}" alt="${pro.name}" class="avatar avatar-xl border-2 border-sky-400 flex-shrink-0">
-          <div class="text-center sm:text-left space-y-2">
+          <div class="text-center sm:text-left space-y-2 w-full">
             <div>
-              <h2 class="text-2xl font-extrabold text-white">${pro.name}</h2>
-              <p class="text-sm font-semibold text-sky-400 mt-0.5">${pro.role} • ${pro.specialty}</p>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-white">${pro.name}</h2>
+              <p class="text-xs sm:text-sm font-semibold text-sky-400 mt-0.5">${pro.role} • ${pro.specialty}</p>
             </div>
 
-            <!-- Compact Direct Contact Buttons & Phone Badge Row (Aligned in 1 Row) -->
-            <div class="flex items-center justify-center sm:justify-start gap-2 pt-1 flex-nowrap overflow-x-auto">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono text-xs font-bold whitespace-nowrap shrink-0">
+            <!-- Compact Direct Contact Buttons & Phone Badge Row -->
+            <div class="flex items-center justify-center sm:justify-start gap-2 pt-1 flex-wrap">
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono text-xs font-bold whitespace-nowrap">
                 <i data-lucide="phone" class="w-3.5 h-3.5"></i>
                 <span>${phoneDisplay}</span>
               </span>
 
-              <a href="https://wa.me/${waNumber}" target="_blank" class="btn btn-sm bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/40 rounded-lg text-xs font-semibold px-2.5 py-1.5 inline-flex items-center gap-1.5 transition-all whitespace-nowrap shrink-0">
+              <a href="https://wa.me/${waNumber}" target="_blank" class="btn btn-sm bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/40 rounded-lg text-xs font-semibold px-2.5 py-1.5 inline-flex items-center gap-1.5 transition-all whitespace-nowrap">
                 <i data-lucide="phone" class="w-3.5 h-3.5"></i>
                 <span>WhatsApp</span>
               </a>
 
-              <a href="https://instagram.com/${instaHandle}" target="_blank" class="btn btn-sm bg-pink-500/15 hover:bg-pink-500/25 text-pink-400 border border-pink-500/40 rounded-lg text-xs font-semibold px-2.5 py-1.5 inline-flex items-center gap-1.5 transition-all whitespace-nowrap shrink-0">
+              <a href="https://instagram.com/${instaHandle}" target="_blank" class="btn btn-sm bg-pink-500/15 hover:bg-pink-500/25 text-pink-400 border border-pink-500/40 rounded-lg text-xs font-semibold px-2.5 py-1.5 inline-flex items-center gap-1.5 transition-all whitespace-nowrap">
                 <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
                 <span>Instagram</span>
               </a>
@@ -1820,22 +1820,22 @@
   function renderLandingView(container) {
     container.innerHTML = `
       <!-- Hero Section -->
-      <section class="relative pt-16 pb-20 px-6 max-w-7xl mx-auto text-center">
+      <section class="relative pt-10 sm:pt-16 pb-12 sm:pb-20 px-4 sm:px-6 max-w-7xl mx-auto text-center">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-white/10 text-xs font-semibold text-sky-400 mb-6">
           <span class="badge badge-pro">NOUVEAU</span>
           <span>Plateforme tout-en-un pour créateurs visuels</span>
         </div>
 
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6 text-white">
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-4 sm:mb-6 text-white">
           Sublimez la livraison de vos travaux & développez votre activité.
         </h1>
 
-        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+        <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
           Kaptur permet aux <strong class="text-white">photographes professionnels</strong> de présenter leurs portfolios, partager des galeries clients sécurisées avec quotas de téléchargement, générer des factures et collaborer entre créateurs d'images.
         </p>
 
         <!-- Main CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
           <a href="#auth?tab=register" class="btn btn-primary btn-lg w-full sm:w-auto">
             <span>Créer mon profil gratuitement</span>
             <i data-lucide="arrow-right"></i>
@@ -1848,106 +1848,106 @@
       </section>
 
       <!-- STREAMLINED FEATURES SECTION (3 Essential Cards) -->
-      <section id="features" class="py-20 px-6 bg-slate-900/50 border-y border-white/10">
+      <section id="features" class="py-12 sm:py-20 px-4 sm:px-6 bg-slate-900/50 border-y border-white/10">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-3xl font-extrabold tracking-tight mb-4 text-white">Une suite d'outils essentielle et épurée.</h2>
-            <p class="text-slate-400">Concentrez-vous sur votre art, Kaptur s'occupe de la livraison, de l'administration et de votre réseau.</p>
+          <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3 text-white">Une suite d'outils essentielle et épurée.</h2>
+            <p class="text-xs sm:text-sm text-slate-400">Concentrez-vous sur votre art, Kaptur s'occupe de la livraison, de l'administration et de votre réseau.</p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <!-- Card 1 -->
-            <div class="card card-hover p-8">
-              <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center mb-6">
-                <i data-lucide="image" class="w-7 h-7"></i>
+            <div class="card card-hover p-5 sm:p-8">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center mb-5">
+                <i data-lucide="image" class="w-6 h-6 sm:w-7 sm:h-7"></i>
               </div>
-              <h3 class="text-xl font-bold mb-3 text-white">Galeries Clients & Quotas</h3>
-              <p class="text-slate-400 text-sm leading-relaxed">Partagez vos photos HD via un lien direct sécurisé. Définissez le nombre maximum de téléchargements autorisés pour le client et suivez les vus en temps réel.</p>
+              <h3 class="text-lg sm:text-xl font-bold mb-2.5 text-white">Galeries Clients & Quotas</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Partagez vos photos HD via un lien direct sécurisé. Définissez le nombre maximum de téléchargements autorisés pour le client et suivez les vus en temps réel.</p>
             </div>
 
             <!-- Card 2 -->
-            <div class="card card-hover p-8">
-              <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mb-6">
-                <i data-lucide="file-text" class="w-7 h-7"></i>
+            <div class="card card-hover p-5 sm:p-8">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mb-5">
+                <i data-lucide="file-text" class="w-6 h-6 sm:w-7 sm:h-7"></i>
               </div>
-              <h3 class="text-xl font-bold mb-3 text-white">Facturation & Reçus Conformes</h3>
-              <p class="text-slate-400 text-sm leading-relaxed">Émettez des factures professionnelles avec calcul automatique de la TVA et suivi des règlements. Générez des reçus PDF prêts à être imprimés ou envoyés.</p>
+              <h3 class="text-lg sm:text-xl font-bold mb-2.5 text-white">Facturation & Reçus Conformes</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Émettez des factures professionnelles avec calcul automatique de la TVA et suivi des règlements. Générez des reçus PDF prêts à être imprimés ou envoyés.</p>
             </div>
 
             <!-- Card 3 -->
-            <div class="card card-hover p-8 border-amber-500/30">
-              <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-6">
-                <i data-lucide="map-pin" class="w-7 h-7"></i>
+            <div class="card card-hover p-5 sm:p-8 border-amber-500/30">
+              <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-5">
+                <i data-lucide="map-pin" class="w-6 h-6 sm:w-7 sm:h-7"></i>
               </div>
-              <div class="flex items-center gap-2 mb-3">
-                <h3 class="text-xl font-bold text-white">Annuaire Géographique Pro</h3>
+              <div class="flex items-center gap-2 mb-2.5">
+                <h3 class="text-lg sm:text-xl font-bold text-white">Annuaire Géographique Pro</h3>
                 <span class="badge badge-pro">PRO</span>
               </div>
-              <p class="text-slate-400 text-sm leading-relaxed">Seuls les membres Pro sont référencés par ville et spécialité. Les clients et agences peuvent vous trouver et vous contacter directement via Instagram ou WhatsApp.</p>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Seuls les membres Pro sont référencés par ville et spécialité. Les clients et agences peuvent vous trouver et vous contacter directement via Instagram ou WhatsApp.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- PUBLIC ANNUAIRE CTA BANNER ON LANDING PAGE -->
-      <section id="annuaire" class="py-20 px-6 max-w-7xl mx-auto">
-        <div class="card card-pro p-10 flex flex-col md:flex-row items-center justify-between gap-8 border-amber-500/40 bg-gradient-to-r from-slate-900 via-[#121824] to-amber-950/30">
-          <div class="space-y-3">
+      <section id="annuaire" class="py-12 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="card card-pro p-5 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-amber-500/40 bg-gradient-to-r from-slate-900 via-[#121824] to-amber-950/30">
+          <div class="space-y-2.5">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
               <i data-lucide="users" class="w-3.5 h-3.5"></i>
               <span>RÉSEAU EXCLUSIF PRO</span>
             </div>
-            <h2 class="text-3xl font-extrabold text-white">Consulter l'Annuaire des Créateurs</h2>
-            <p class="text-slate-300 text-sm max-w-xl">Accédez à la liste des photographes Pro disponibles par ville avec leurs coordonnées Instagram & WhatsApp directs.</p>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Consulter l'Annuaire des Créateurs</h2>
+            <p class="text-slate-300 text-xs sm:text-sm max-w-xl">Accédez à la liste des photographes Pro disponibles par ville avec leurs coordonnées Instagram & WhatsApp directs.</p>
           </div>
-          <button id="btn-open-directory-modal-2" class="btn btn-pro btn-lg flex-shrink-0">
+          <button id="btn-open-directory-modal-2" class="btn btn-pro btn-lg w-full sm:w-auto flex-shrink-0">
             <i data-lucide="list"></i>
             <span>Voir la liste des professionnels</span>
           </button>
         </div>
       </section>
 
-      <!-- PRICING SECTION (Clean feature comparison with gallery quota limits) -->
-      <section id="pricing" class="py-20 px-6 max-w-7xl mx-auto border-b border-white/10">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl font-extrabold tracking-tight mb-4 text-white">Tarifs simples et transparents.</h2>
-          <p class="text-slate-400">Choisissez la formule adaptée à votre volume de travail.</p>
+      <!-- PRICING SECTION -->
+      <section id="pricing" class="py-12 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto border-b border-white/10">
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3 text-white">Tarifs simples et transparents.</h2>
+          <p class="text-xs sm:text-sm text-slate-400">Choisissez la formule adaptée à votre volume de travail.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           <!-- Standard Plan -->
-          <div class="card flex flex-col justify-between p-8">
+          <div class="card flex flex-col justify-between p-5 sm:p-8">
             <div>
               <div class="flex items-center justify-between mb-4">
-                <h3 class="text-2xl font-bold text-white">Standard</h3>
+                <h3 class="text-xl sm:text-2xl font-bold text-white">Standard</h3>
                 <span class="badge badge-subtle">Pour débuter</span>
               </div>
-              <div class="text-4xl font-extrabold mb-6 text-white">2 000 FCFA <span class="text-base font-normal text-slate-400">/ mois</span></div>
-              <ul class="space-y-3 text-sm mb-8 text-slate-300">
-                <li class="flex items-center gap-3"><i data-lucide="check" class="text-sky-400 w-4 h-4"></i> <strong>Jusqu'à 4 Galeries clients actives</strong></li>
-                <li class="flex items-center gap-3"><i data-lucide="check" class="text-sky-400 w-4 h-4"></i> <strong>Génération de liens directs & Définition du quota</strong></li>
-                <li class="flex items-center gap-3"><i data-lucide="check" class="text-sky-400 w-4 h-4"></i> Création de factures & reçus conformes</li>
-                <li class="flex items-center gap-3 text-slate-500 line-through"><i data-lucide="x" class="w-4 h-4"></i> Pas d'accès à la messagerie privée Pro</li>
-                <li class="flex items-center gap-3 text-slate-500 line-through"><i data-lucide="x" class="w-4 h-4"></i> Pas de référencement dans l'annuaire Pro</li>
+              <div class="text-3xl sm:text-4xl font-extrabold mb-6 text-white">2 000 FCFA <span class="text-xs sm:text-base font-normal text-slate-400">/ mois</span></div>
+              <ul class="space-y-3 text-xs sm:text-sm mb-8 text-slate-300">
+                <li class="flex items-center gap-3"><i data-lucide="check" class="text-sky-400 w-4 h-4 shrink-0"></i> <strong>Jusqu'à 4 Galeries clients actives</strong></li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="text-sky-400 w-4 h-4 shrink-0"></i> <strong>Génération de liens directs & Définition du quota</strong></li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="text-sky-400 w-4 h-4 shrink-0"></i> Création de factures & reçus conformes</li>
+                <li class="flex items-center gap-3 text-slate-500 line-through"><i data-lucide="x" class="w-4 h-4 shrink-0"></i> Pas d'accès à la messagerie privée Pro</li>
+                <li class="flex items-center gap-3 text-slate-500 line-through"><i data-lucide="x" class="w-4 h-4 shrink-0"></i> Pas de référencement dans l'annuaire Pro</li>
               </ul>
             </div>
             <a href="#auth?tab=register&plan=Standard" class="btn btn-outline w-full text-center">Rejoindre en Standard</a>
           </div>
 
           <!-- Pro Plan -->
-          <div class="card card-pro flex flex-col justify-between relative overflow-hidden p-8 border-amber-500/40">
+          <div class="card card-pro flex flex-col justify-between relative overflow-hidden p-5 sm:p-8 border-amber-500/40">
             <div>
               <div class="flex items-center justify-between mb-4">
-                <h3 class="text-2xl font-bold text-amber-400">Offre Pro</h3>
+                <h3 class="text-xl sm:text-2xl font-bold text-amber-400">Offre Pro</h3>
                 <span class="badge badge-pro">RECOMMANDÉ</span>
               </div>
-              <div class="text-4xl font-extrabold mb-6 text-amber-400">3 000 FCFA <span class="text-base font-normal text-slate-400">/ mois</span></div>
-              <ul class="space-y-3 text-sm mb-8 text-slate-200">
-                <li class="flex items-center gap-3"><i data-lucide="check" class="text-amber-400 w-4 h-4"></i> <strong>Jusqu'à 6 Galeries clients actives</strong></li>
-                <li class="flex items-center gap-3"><i data-lucide="check" class="text-amber-400 w-4 h-4"></i> <strong>Génération de liens directs & Quotas personnalisables</strong></li>
-                <li class="flex items-center gap-3"><i data-lucide="check" class="text-amber-400 w-4 h-4"></i> Création de factures avec logo</li>
-                <li class="flex items-center gap-3 font-semibold text-white"><i data-lucide="check" class="text-amber-400 w-4 h-4"></i> <strong>Messagerie Privée Communauté Pro</strong></li>
-                <li class="flex items-center gap-3 font-semibold text-white"><i data-lucide="check" class="text-amber-400 w-4 h-4"></i> <strong>Visibilité Annuaire Géographique + Badge Pro</strong></li>
+              <div class="text-3xl sm:text-4xl font-extrabold mb-6 text-amber-400">3 000 FCFA <span class="text-xs sm:text-base font-normal text-slate-400">/ mois</span></div>
+              <ul class="space-y-3 text-xs sm:text-sm mb-8 text-slate-200">
+                <li class="flex items-center gap-3"><i data-lucide="check" class="text-amber-400 w-4 h-4 shrink-0"></i> <strong>Jusqu'à 6 Galeries clients actives</strong></li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="text-amber-400 w-4 h-4 shrink-0"></i> <strong>Génération de liens directs & Quotas personnalisables</strong></li>
+                <li class="flex items-center gap-3"><i data-lucide="check" class="text-amber-400 w-4 h-4 shrink-0"></i> Création de factures avec logo</li>
+                <li class="flex items-center gap-3 font-semibold text-white"><i data-lucide="check" class="text-amber-400 w-4 h-4 shrink-0"></i> <strong>Messagerie Privée Communauté Pro</strong></li>
+                <li class="flex items-center gap-3 font-semibold text-white"><i data-lucide="check" class="text-amber-400 w-4 h-4 shrink-0"></i> <strong>Visibilité Annuaire Géographique + Badge Pro</strong></li>
               </ul>
             </div>
             <a href="#auth?tab=register&plan=Pro" class="btn btn-pro w-full text-center">Devenir Membre Pro</a>
@@ -1955,61 +1955,61 @@
         </div>
       </section>
 
-      <!-- FAQ SECTION (4 Essential Accordions) -->
-      <section id="faq" class="py-20 px-6 max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-extrabold tracking-tight mb-4 text-white">Questions Fréquentes (FAQ)</h2>
-          <p class="text-slate-400 text-sm">Tout ce que vous devez savoir avant de commencer avec Kaptur.</p>
+      <!-- FAQ SECTION -->
+      <section id="faq" class="py-12 sm:py-20 px-4 sm:px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-8 sm:mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2 text-white">Questions Fréquentes (FAQ)</h2>
+          <p class="text-slate-400 text-xs sm:text-sm">Tout ce que vous devez savoir avant de commencer avec Kaptur.</p>
         </div>
 
-        <div class="space-y-4">
-          <div class="card p-6 cursor-pointer faq-item">
-            <div class="flex items-center justify-between font-bold text-lg text-white">
+        <div class="space-y-3 sm:space-y-4">
+          <div class="card p-4 sm:p-6 cursor-pointer faq-item">
+            <div class="flex items-center justify-between font-bold text-sm sm:text-base md:text-lg text-white gap-3">
               <span>1. Comment mon client accède-t-il à ses photos et au quota de téléchargement ?</span>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-sky-400 transition-transform faq-icon"></i>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-sky-400 transition-transform faq-icon shrink-0"></i>
             </div>
-            <div class="text-sm text-slate-400 mt-3 hidden faq-answer">
+            <div class="text-xs sm:text-sm text-slate-400 mt-3 hidden faq-answer leading-relaxed">
               Lorsque vous créez une galerie, Kaptur génère un lien d'accès direct. Vous définissez le quota maximum de photos que votre client est autorisé à télécharger (ex: 10 photos). Le client clique sur son lien, consulte ses photos et les télécharge dans la limite de son quota.
             </div>
           </div>
 
-          <div class="card p-6 cursor-pointer faq-item">
-            <div class="flex items-center justify-between font-bold text-lg text-white">
+          <div class="card p-4 sm:p-6 cursor-pointer faq-item">
+            <div class="flex items-center justify-between font-bold text-sm sm:text-base md:text-lg text-white gap-3">
               <span>2. Qui peut apparaître dans l'annuaire géographique des créateurs ?</span>
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 shrink-0">
                 <span class="badge badge-pro">PRO</span>
                 <i data-lucide="chevron-down" class="w-5 h-5 text-sky-400 transition-transform faq-icon"></i>
               </div>
             </div>
-            <div class="text-sm text-slate-400 mt-3 hidden faq-answer">
+            <div class="text-xs sm:text-sm text-slate-400 mt-3 hidden faq-answer leading-relaxed">
               Seuls les professionnels abonnés à l'offre <strong>Pro</strong> apparaissent dans l'annuaire géographique. Les clients et agences à la recherche d'un photographe sur Dakar, Paris, Lyon ou Bruxelles peuvent consulter leur fiche et les contacter directement via Instagram ou WhatsApp.
             </div>
           </div>
 
-          <div class="card p-6 cursor-pointer faq-item">
-            <div class="flex items-center justify-between font-bold text-lg text-white">
+          <div class="card p-4 sm:p-6 cursor-pointer faq-item">
+            <div class="flex items-center justify-between font-bold text-sm sm:text-base md:text-lg text-white gap-3">
               <span>3. Quelle est la différence entre l'abonnement Standard et Pro ?</span>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-sky-400 transition-transform faq-icon"></i>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-sky-400 transition-transform faq-icon shrink-0"></i>
             </div>
-            <div class="text-sm text-slate-400 mt-3 hidden faq-answer">
+            <div class="text-xs sm:text-sm text-slate-400 mt-3 hidden faq-answer leading-relaxed">
               L'offre Standard (2 000 FCFA/mois) autorise jusqu'à 4 galeries actives avec quotas et la création de factures. L'offre Pro (3 000 FCFA/mois) permet jusqu'à 6 galeries actives, la messagerie privée exclusive entre créateurs et le référencement dans l'annuaire géographique Pro.
             </div>
           </div>
 
-          <div class="card p-6 cursor-pointer faq-item">
-            <div class="flex items-center justify-between font-bold text-lg text-white">
+          <div class="card p-4 sm:p-6 cursor-pointer faq-item">
+            <div class="flex items-center justify-between font-bold text-sm sm:text-base md:text-lg text-white gap-3">
               <span>4. Mes clients doivent-ils créer un compte pour télécharger leurs photos ?</span>
-              <i data-lucide="chevron-down" class="w-5 h-5 text-sky-400 transition-transform faq-icon"></i>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-sky-400 transition-transform faq-icon shrink-0"></i>
             </div>
-            <div class="text-sm text-slate-400 mt-3 hidden faq-answer">
+            <div class="text-xs sm:text-sm text-slate-400 mt-3 hidden faq-answer leading-relaxed">
               Non ! Aucun compte n'est requis pour vos clients. Ils ouvrent simplement le lien direct que vous leur fournissez et téléchargent leurs photos autorisées en un clic.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ELEGANT FOOTER (Pied de Page) -->
-      <footer class="py-12 px-6 border-t border-white/10 bg-[#090D14] text-sm text-slate-400">
+      <!-- FOOTER -->
+      <footer class="py-10 sm:py-12 px-4 sm:px-6 border-t border-white/10 bg-[#090D14] text-sm text-slate-400">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div class="space-y-3 md:col-span-2">
             <div class="flex items-center gap-3">
@@ -2074,17 +2074,17 @@
     const prePlan = params.get('plan') || 'Pro';
 
     container.innerHTML = `
-      <div class="min-h-[85vh] flex items-center justify-center px-4 py-12">
-        <div class="card max-w-md w-full p-8 bg-[#121824] border border-white/15 shadow-2xl">
-          <div class="text-center mb-8">
-            <a href="#landing" class="inline-flex items-center gap-3 mb-4">
-              <div class="logo-icon bg-sky-400 text-slate-950 flex items-center justify-center rounded-lg font-bold text-xl w-10 h-10">K</div>
-              <span class="font-bold text-2xl tracking-tight text-white">KAPTUR</span>
+      <div class="min-h-[85vh] flex items-center justify-center px-3 sm:px-4 py-8 sm:py-12">
+        <div class="card max-w-md w-full p-5 sm:p-8 bg-[#121824] border border-white/15 shadow-2xl">
+          <div class="text-center mb-6 sm:mb-8">
+            <a href="#landing" class="inline-flex items-center gap-2.5 mb-3">
+              <div class="logo-icon bg-sky-400 text-slate-950 flex items-center justify-center rounded-lg font-bold text-lg sm:text-xl w-9 h-9 sm:w-10 sm:h-10">K</div>
+              <span class="font-bold text-xl sm:text-2xl tracking-tight text-white">KAPTUR</span>
             </a>
-            <p class="text-sm text-slate-400">Accédez à votre espace professionnel Kaptur</p>
+            <p class="text-xs sm:text-sm text-slate-400">Accédez à votre espace professionnel Kaptur</p>
           </div>
 
-          <div class="flex border-b border-white/10 mb-6 text-center font-semibold text-sm">
+          <div class="flex border-b border-white/10 mb-6 text-center font-semibold text-xs sm:text-sm">
             <button id="tab-btn-login" class="flex-1 py-3 border-b-2 ${!isRegister ? 'border-sky-400 text-sky-400' : 'border-transparent text-slate-400'}">
               Connexion
             </button>
@@ -2113,7 +2113,7 @@
           <form id="form-register" class="${!isRegister ? 'hidden' : 'block'} space-y-4">
             <div class="form-group">
               <label class="form-label">Choix de l'abonnement</label>
-              <div class="grid grid-cols-2 gap-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <label class="cursor-pointer">
                   <input type="radio" name="reg-plan" value="Standard" class="peer hidden" ${prePlan === 'Standard' ? 'checked' : ''}>
                   <div class="p-3 rounded-xl bg-slate-900 border border-white/10 peer-checked:border-sky-400 peer-checked:bg-sky-500/10 text-center transition-all">
@@ -2221,71 +2221,71 @@
       <div class="page-container space-y-8">
         
         <!-- Welcome Header -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#121824] p-6 rounded-2xl border border-white/10 shadow-lg">
-          <div class="flex items-center gap-4">
-            <img src="${user.avatar}" alt="${user.name}" class="w-14 h-14 rounded-full object-cover border-2 border-sky-500/50 shadow-md">
-            <div>
-              <div class="flex items-center gap-3">
-                <h1 class="text-2xl font-extrabold tracking-tight text-white">Bonjour, ${user.name}</h1>
-                <span class="badge ${user.plan === 'Pro' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' : 'bg-slate-800 text-slate-300 border border-white/10'} px-2.5 py-0.5 rounded-full text-xs font-semibold">${user.plan}</span>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#121824] p-4 sm:p-6 rounded-2xl border border-white/10 shadow-lg">
+          <div class="flex items-center gap-3 sm:gap-4">
+            <img src="${user.avatar}" alt="${user.name}" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-sky-500/50 shadow-md shrink-0">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 sm:gap-3 flex-wrap">
+                <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white truncate">Bonjour, ${user.name}</h1>
+                <span class="badge ${user.plan === 'Pro' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' : 'bg-slate-800 text-slate-300 border border-white/10'} px-2 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold">${user.plan}</span>
               </div>
-              <p class="text-sm text-slate-400 mt-1">${user.role} • ${user.city}, ${user.country}</p>
+              <p class="text-xs sm:text-sm text-slate-400 mt-0.5 truncate">${user.role} • ${user.city}, ${user.country}</p>
             </div>
           </div>
 
-          <div class="flex items-center gap-3 flex-wrap">
-            <button id="btn-dash-new-gal" class="btn btn-primary shadow-md hover:shadow-sky-500/20">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+            <button id="btn-dash-new-gal" class="btn btn-primary w-full sm:w-auto text-xs sm:text-sm shadow-md hover:shadow-sky-500/20">
               <i data-lucide="plus-circle" class="w-4 h-4"></i><span>Nouvelle Galerie (${activeGalleries.length}/${maxGalleries})</span>
             </button>
-            <a href="#invoices" class="btn btn-outline border-white/15 text-slate-200 hover:bg-white/5">
+            <a href="#invoices" class="btn btn-outline w-full sm:w-auto text-xs sm:text-sm border-white/15 text-slate-200 hover:bg-white/5">
               <i data-lucide="file-plus" class="w-4 h-4"></i><span>Créer Facture</span>
             </a>
           </div>
         </div>
 
         <!-- Key Analytics Metrics Grid (4 KPI Cards) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           
           <!-- Metric 1: Active Galleries -->
-          <div class="card p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-sky-500/30 transition-all shadow-md">
-            <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center border border-sky-500/30 shrink-0">
-              <i data-lucide="image" class="w-6 h-6"></i>
+          <div class="card p-4 sm:p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-sky-500/30 transition-all shadow-md">
+            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center border border-sky-500/30 shrink-0">
+              <i data-lucide="image" class="w-5 h-5 sm:w-6 sm:h-6"></i>
             </div>
             <div>
-              <div class="text-2xl font-extrabold text-white">${activeGalleries.length} / ${maxGalleries}</div>
+              <div class="text-xl sm:text-2xl font-extrabold text-white">${activeGalleries.length} / ${maxGalleries}</div>
               <div class="text-xs text-slate-400 font-medium">Galeries Actives</div>
             </div>
           </div>
 
           <!-- Metric 2: Total Client Downloads -->
-          <div class="card p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-emerald-500/30 transition-all shadow-md">
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/30 shrink-0">
-              <i data-lucide="download" class="w-6 h-6"></i>
+          <div class="card p-4 sm:p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-emerald-500/30 transition-all shadow-md">
+            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/30 shrink-0">
+              <i data-lucide="download" class="w-5 h-5 sm:w-6 sm:h-6"></i>
             </div>
             <div>
-              <div class="text-2xl font-extrabold text-white">${totalDownloads}</div>
+              <div class="text-xl sm:text-2xl font-extrabold text-white">${totalDownloads}</div>
               <div class="text-xs text-slate-400 font-medium">Téléchargements HD</div>
             </div>
           </div>
 
           <!-- Metric 3: Total Invoiced Revenue -->
-          <div class="card p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-purple-500/30 transition-all shadow-md">
-            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/30 shrink-0">
-              <i data-lucide="credit-card" class="w-6 h-6"></i>
+          <div class="card p-4 sm:p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-purple-500/30 transition-all shadow-md">
+            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/30 shrink-0">
+              <i data-lucide="credit-card" class="w-5 h-5 sm:w-6 sm:h-6"></i>
             </div>
             <div>
-              <div class="text-2xl font-extrabold text-white">${totalRevenue.toFixed(2)} €</div>
+              <div class="text-xl sm:text-2xl font-extrabold text-white">${totalRevenue.toFixed(2)} €</div>
               <div class="text-xs text-slate-400 font-medium">Volume Facturé</div>
             </div>
           </div>
 
           <!-- Metric 4: Unread Pro DMs -->
-          <div class="card p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-amber-500/30 transition-all shadow-md">
-            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/30 shrink-0">
-              <i data-lucide="message-square" class="w-6 h-6"></i>
+          <div class="card p-4 sm:p-5 bg-[#121824] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-amber-500/30 transition-all shadow-md">
+            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/30 shrink-0">
+              <i data-lucide="message-square" class="w-5 h-5 sm:w-6 sm:h-6"></i>
             </div>
             <div>
-              <div class="text-2xl font-extrabold text-white">${unreadDMs}</div>
+              <div class="text-xl sm:text-2xl font-extrabold text-white">${unreadDMs}</div>
               <div class="text-xs text-slate-400 font-medium">Messages Pro Non-Lus</div>
             </div>
           </div>
@@ -2293,17 +2293,17 @@
 
         <!-- Quick Navigation & Access Cards Section -->
         <div class="space-y-4">
-          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
             <i data-lucide="compass" class="w-5 h-5 text-sky-400"></i>
             <span>Accès Rapides & Modules</span>
           </h2>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             
             <!-- Card 1: Galeries -->
-            <a href="#galleries" class="card p-5 bg-[#121824] border border-white/10 hover:border-sky-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
+            <a href="#galleries" class="card p-4 sm:p-5 bg-[#121824] border border-white/10 hover:border-sky-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
               <div class="flex items-center justify-between">
-                <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center border border-sky-500/20 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center border border-sky-500/20 group-hover:bg-sky-500 group-hover:text-white transition-colors">
                   <i data-lucide="grid" class="w-5 h-5"></i>
                 </div>
                 <div class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 group-hover:text-sky-400 group-hover:bg-sky-500/10 transition-colors">
@@ -2311,7 +2311,7 @@
                 </div>
               </div>
               <div>
-                <h3 class="font-extrabold text-base text-white group-hover:text-sky-400 transition-colors">Toutes les Galeries</h3>
+                <h3 class="font-extrabold text-sm sm:text-base text-white group-hover:text-sky-400 transition-colors">Toutes les Galeries</h3>
                 <p class="text-xs text-slate-400 mt-1 leading-relaxed">Gérer vos collections, photos HD et liens de téléchargement client.</p>
               </div>
               <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-medium">
@@ -2321,9 +2321,9 @@
             </a>
 
             <!-- Card 2: Factures -->
-            <a href="#invoices" class="card p-5 bg-[#121824] border border-white/10 hover:border-purple-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
+            <a href="#invoices" class="card p-4 sm:p-5 bg-[#121824] border border-white/10 hover:border-purple-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
               <div class="flex items-center justify-between">
-                <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20 group-hover:bg-purple-500 group-hover:text-white transition-colors">
                   <i data-lucide="file-text" class="w-5 h-5"></i>
                 </div>
                 <div class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-colors">
@@ -2331,7 +2331,7 @@
                 </div>
               </div>
               <div>
-                <h3 class="font-extrabold text-base text-white group-hover:text-purple-400 transition-colors">Mes Factures</h3>
+                <h3 class="font-extrabold text-sm sm:text-base text-white group-hover:text-purple-400 transition-colors">Mes Factures</h3>
                 <p class="text-xs text-slate-400 mt-1 leading-relaxed">Générer, exporter en PDF et suivre vos règlements clients.</p>
               </div>
               <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-medium">
@@ -2341,9 +2341,9 @@
             </a>
 
             <!-- Card 3: Notifications -->
-            <a href="#notifications" class="card p-5 bg-[#121824] border border-white/10 hover:border-emerald-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
+            <a href="#notifications" class="card p-4 sm:p-5 bg-[#121824] border border-white/10 hover:border-emerald-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
               <div class="flex items-center justify-between">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                   <i data-lucide="bell" class="w-5 h-5"></i>
                 </div>
                 <div class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 group-hover:text-emerald-400 group-hover:bg-emerald-500/10 transition-colors">
@@ -2351,8 +2351,8 @@
                 </div>
               </div>
               <div>
-                <h3 class="font-extrabold text-base text-white group-hover:text-emerald-400 transition-colors">Vos Notifications</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Alertes en temps réel sur les téléchargements et téléchargements clients.</p>
+                <h3 class="font-extrabold text-sm sm:text-base text-white group-hover:text-emerald-400 transition-colors">Vos Notifications</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Alertes en temps réel sur les téléchargements clients.</p>
               </div>
               <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-medium">
                 <span>${notifs.length} alertes en cours</span>
@@ -2361,9 +2361,9 @@
             </a>
 
             <!-- Card 4: Communauté Pro -->
-            <a href="#community" class="card p-5 bg-[#121824] border border-white/10 hover:border-amber-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
+            <a href="#community" class="card p-4 sm:p-5 bg-[#121824] border border-white/10 hover:border-amber-500/50 rounded-2xl flex flex-col justify-between space-y-4 group transition-all duration-200 hover:-translate-y-1 shadow-lg">
               <div class="flex items-center justify-between">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20 group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20 group-hover:bg-amber-500 group-hover:text-white transition-colors">
                   <i data-lucide="users" class="w-5 h-5"></i>
                 </div>
                 <div class="w-7 h-7 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 group-hover:text-amber-400 group-hover:bg-amber-500/10 transition-colors">
@@ -2371,7 +2371,7 @@
                 </div>
               </div>
               <div>
-                <h3 class="font-extrabold text-base text-white group-hover:text-amber-400 transition-colors">Communauté Pro</h3>
+                <h3 class="font-extrabold text-sm sm:text-base text-white group-hover:text-amber-400 transition-colors">Communauté Pro</h3>
                 <p class="text-xs text-slate-400 mt-1 leading-relaxed">Échanger avec les photographes et participer aux discussions.</p>
               </div>
               <div class="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400 font-medium">
@@ -2384,17 +2384,17 @@
         </div>
 
         <!-- Subscription & Quota Status Bar -->
-        <div class="card p-5 bg-gradient-to-r from-slate-900 via-[#121824] to-slate-900 border border-white/10 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
+        <div class="card p-4 sm:p-5 bg-gradient-to-r from-slate-900 via-[#121824] to-slate-900 border border-white/10 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center border border-sky-500/20 shrink-0">
               <i data-lucide="shield-check" class="w-5 h-5"></i>
             </div>
             <div>
-              <h4 class="text-sm font-extrabold text-white">Statut du compte : Formule ${user.plan}</h4>
+              <h4 class="text-xs sm:text-sm font-extrabold text-white">Statut du compte : Formule ${user.plan}</h4>
               <p class="text-xs text-slate-400">Quota de galeries actives : <span class="text-sky-400 font-semibold">${activeGalleries.length}/${maxGalleries}</span> utilisées</p>
             </div>
           </div>
-          <a href="#subscription" class="btn btn-secondary btn-sm text-xs px-4 py-2 font-semibold">
+          <a href="#subscription" class="btn btn-secondary btn-sm text-xs px-4 py-2 font-semibold w-full sm:w-auto text-center">
             Gérer mon abonnement
           </a>
         </div>
@@ -2575,7 +2575,7 @@
               <label class="form-label">Titre de la galerie / projet</label>
               <input type="text" id="g-title" class="form-input" placeholder="Ex: Shooting Lookbook Automne" required>
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="form-group">
                 <label class="form-label">Nom du Client</label>
                 <input type="text" id="g-client-name" class="form-input" placeholder="Ex: Maison Lumière" required>
@@ -3592,13 +3592,13 @@
     const photographer = store.getUser();
 
     modal.innerHTML = `
-      <div class="modal-card max-w-2xl bg-white text-slate-900 p-8 space-y-6 rounded-2xl shadow-2xl text-left border border-slate-200 animate-fade-in relative">
+      <div class="modal-card max-w-2xl bg-white text-slate-900 p-4 sm:p-8 space-y-4 sm:space-y-6 rounded-2xl shadow-2xl text-left border border-slate-200 animate-fade-in relative">
         
         <!-- Printable Invoice Container for PDF generator -->
-        <div id="invoice-pdf-printable" class="space-y-6 bg-white p-2">
+        <div id="invoice-pdf-printable" class="space-y-5 sm:space-y-6 bg-white p-1 sm:p-2">
           
           <!-- Document Header -->
-          <div class="flex items-start justify-between border-b border-slate-200 pb-6">
+          <div class="flex flex-col sm:flex-row items-start justify-between border-b border-slate-200 pb-4 sm:pb-6 gap-3">
             <div>
               <div class="flex items-center gap-2 mb-1">
                 <span class="font-extrabold text-2xl tracking-tight text-slate-900">KAPTUR</span>
@@ -3608,15 +3608,15 @@
               <p class="text-xs text-slate-500">${photographer.city || 'Paris'}, ${photographer.country || 'France'}</p>
             </div>
 
-            <div class="text-right space-y-1">
-              <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">FACTURE ACQUITTÉE</span>
-              <h2 class="text-xl font-bold font-mono text-slate-800 pt-1">${inv.number}</h2>
+            <div class="text-left sm:text-right space-y-1">
+              <span class="inline-block bg-emerald-100 text-emerald-800 text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">FACTURE ACQUITTÉE</span>
+              <h2 class="text-lg sm:text-xl font-bold font-mono text-slate-800 pt-1">${inv.number}</h2>
               <p class="text-xs text-slate-500">Émise le : ${inv.issueDate}</p>
             </div>
           </div>
 
           <!-- Bill To & Bill From Section -->
-          <div class="grid grid-cols-2 gap-6 bg-slate-50 p-4 rounded-xl text-xs border border-slate-100">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 bg-slate-50 p-4 rounded-xl text-xs border border-slate-100">
             <div>
               <div class="font-bold text-slate-400 uppercase tracking-wider mb-1">Émetteur (Photographe)</div>
               <div class="font-bold text-slate-900 text-sm">${photographer.name}</div>
@@ -3632,7 +3632,7 @@
           </div>
 
           <!-- Line Items Table -->
-          <div class="border border-slate-200 rounded-xl overflow-hidden text-xs">
+          <div class="responsive-table-wrapper border border-slate-200 rounded-xl overflow-hidden text-xs">
             <table class="w-full text-left">
               <thead class="bg-slate-100 text-slate-600 font-bold border-b border-slate-200">
                 <tr>
@@ -3652,14 +3652,14 @@
           </div>
 
           <!-- Total Footer -->
-          <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-4 border-t border-slate-200 gap-3">
             <div class="text-xs text-slate-500 space-y-1">
               <p>Document officiel émis via la plateforme Kaptur.</p>
               <p class="font-mono text-[11px]">TVA non applicable, art. 293 B du CGI</p>
             </div>
-            <div class="text-right">
+            <div class="text-left sm:text-right">
               <div class="text-xs text-slate-500 uppercase font-bold">Total Payé</div>
-              <div class="text-2xl font-black text-slate-900 font-mono">${inv.total.toFixed(0)} €</div>
+              <div class="text-xl sm:text-2xl font-black text-slate-900 font-mono">${inv.total.toFixed(0)} €</div>
             </div>
           </div>
 
@@ -3759,38 +3759,72 @@
           </div>
         </div>
 
-        <div class="card p-0 overflow-hidden border border-white/10 shadow-xl">
-          <table class="w-full text-left text-sm">
-            <thead class="bg-slate-900 text-slate-400 text-xs uppercase font-bold border-b border-white/10">
-              <tr>
-                <th class="p-4">N° Facture</th>
-                <th class="p-4">Client</th>
-                <th class="p-4">Date</th>
-                <th class="p-4 text-right">Montant Total</th>
-                <th class="p-4 text-center">Actions</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-white/10">
-              ${invoices.map(inv => `
-                <tr class="hover:bg-slate-900/50 transition-colors">
-                  <td class="p-4 font-mono font-bold text-sky-400">${inv.number}</td>
-                  <td class="p-4 font-semibold text-white">${inv.clientName}</td>
-                  <td class="p-4 text-xs text-slate-400 font-mono">${inv.issueDate}</td>
-                  <td class="p-4 text-right font-extrabold text-emerald-400 font-mono text-base">${inv.total.toFixed(0)} €</td>
-                  <td class="p-4 text-center">
-                    <div class="flex items-center justify-center gap-2">
-                      <button class="btn btn-secondary btn-sm text-xs btn-preview-inv" data-id="${inv.id}" title="Voir et télécharger le PDF">
-                        <i data-lucide="eye" class="w-3.5 h-3.5"></i> Voir PDF
-                      </button>
-                      <button class="btn btn-ghost btn-sm text-red-400 hover:bg-red-500/10 p-1.5 rounded-lg btn-delete-inv-row" data-id="${inv.id}" data-num="${inv.number}" data-client="${inv.clientName}" title="Supprimer la facture">
-                        <i data-lucide="trash-2" class="w-4 h-4"></i>
-                      </button>
-                    </div>
-                  </td>
+        <!-- Mobile Stacked Card View (Visible on small screens < 640px) -->
+        <div class="block sm:hidden space-y-3">
+          ${invoices.map(inv => `
+            <div class="card p-4 space-y-3 border border-white/10 bg-[#121824] shadow-md">
+              <div class="flex items-center justify-between border-b border-white/10 pb-2.5">
+                <div>
+                  <span class="font-mono font-bold text-sky-400 text-sm">${inv.number}</span>
+                  <div class="text-[11px] text-slate-400 font-mono">${inv.issueDate}</div>
+                </div>
+                <div class="text-right">
+                  <span class="font-extrabold text-emerald-400 font-mono text-lg">${inv.total.toFixed(0)} €</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="text-xs text-slate-400 font-medium">Client</div>
+                  <div class="font-semibold text-white text-sm">${inv.clientName}</div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button class="btn btn-secondary btn-sm text-xs btn-preview-inv" data-id="${inv.id}" title="Voir et télécharger le PDF">
+                    <i data-lucide="eye" class="w-3.5 h-3.5"></i> PDF
+                  </button>
+                  <button class="btn btn-ghost btn-sm text-red-400 hover:bg-red-500/10 p-2 rounded-lg btn-delete-inv-row" data-id="${inv.id}" data-num="${inv.number}" data-client="${inv.clientName}" title="Supprimer">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Desktop Table View (Hidden on mobile < 640px) -->
+        <div class="hidden sm:block card p-0 overflow-hidden border border-white/10 shadow-xl">
+          <div class="responsive-table-wrapper">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-900 text-slate-400 text-xs uppercase font-bold border-b border-white/10">
+                <tr>
+                  <th class="p-4">N° Facture</th>
+                  <th class="p-4">Client</th>
+                  <th class="p-4">Date</th>
+                  <th class="p-4 text-right">Montant Total</th>
+                  <th class="p-4 text-center">Actions</th>
                 </tr>
-              `).join('')}
-            </tbody>
-          </table>
+              </thead>
+              <tbody class="divide-y divide-white/10">
+                ${invoices.map(inv => `
+                  <tr class="hover:bg-slate-900/50 transition-colors">
+                    <td class="p-4 font-mono font-bold text-sky-400">${inv.number}</td>
+                    <td class="p-4 font-semibold text-white">${inv.clientName}</td>
+                    <td class="p-4 text-xs text-slate-400 font-mono">${inv.issueDate}</td>
+                    <td class="p-4 text-right font-extrabold text-emerald-400 font-mono text-base">${inv.total.toFixed(0)} €</td>
+                    <td class="p-4 text-center">
+                      <div class="flex items-center justify-center gap-2">
+                        <button class="btn btn-secondary btn-sm text-xs btn-preview-inv" data-id="${inv.id}" title="Voir et télécharger le PDF">
+                          <i data-lucide="eye" class="w-3.5 h-3.5"></i> Voir PDF
+                        </button>
+                        <button class="btn btn-ghost btn-sm text-red-400 hover:bg-red-500/10 p-1.5 rounded-lg btn-delete-inv-row" data-id="${inv.id}" data-num="${inv.number}" data-client="${inv.clientName}" title="Supprimer la facture">
+                          <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -4303,19 +4337,19 @@
 
       container.innerHTML = `
         <div class="page-container space-y-8">
-          <div class="flex items-center justify-between border-b border-white/10 pb-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
             <div>
               <h1 class="text-2xl font-extrabold tracking-tight text-white">Gestion de votre Abonnement</h1>
               <p class="text-sm text-slate-400">Formule actuelle : <strong class="text-white">${user.plan}</strong></p>
             </div>
-            <button id="btn-toggle-sub" class="btn ${isPro ? 'btn-outline' : 'btn-pro'}">
+            <button id="btn-toggle-sub" class="btn ${isPro ? 'btn-outline' : 'btn-pro'} w-full sm:w-auto">
               <span>${isPro ? 'Rétrograder en Standard' : 'Passer à l\'Offre Pro (3 000 FCFA/mois)'}</span>
             </button>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
             <!-- Standard Plan Card -->
-            <div class="card p-8 flex flex-col justify-between ${!isPro ? 'border-2 border-sky-400' : ''}">
+            <div class="card p-5 sm:p-8 flex flex-col justify-between ${!isPro ? 'border-2 border-sky-400' : ''}">
               <div>
                 <h3 class="text-xl font-bold text-white mb-2">Formule Standard</h3>
                 <div class="text-3xl font-extrabold text-white mb-6">2 000 FCFA <span class="text-xs font-normal text-slate-400">/ mois</span></div>
@@ -4331,7 +4365,7 @@
             </div>
 
             <!-- Pro Plan Card -->
-            <div class="card card-pro p-8 flex flex-col justify-between ${isPro ? 'border-2 border-amber-400' : ''}">
+            <div class="card card-pro p-5 sm:p-8 flex flex-col justify-between ${isPro ? 'border-2 border-amber-400' : ''}">
               <div>
                 <h3 class="text-xl font-bold text-amber-400 mb-2">Formule Pro</h3>
                 <div class="text-3xl font-extrabold text-amber-400 mb-6">3 000 FCFA <span class="text-xs font-normal text-slate-400">/ mois</span></div>
@@ -4370,16 +4404,16 @@
 
     container.innerHTML = `
       <div class="page-container space-y-8">
-        <div class="flex items-center justify-between border-b border-white/10 pb-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
           <div>
             <h1 class="text-2xl font-extrabold tracking-tight text-white">Mon Profil Professionnel</h1>
             <p class="text-sm text-slate-400">Personnalisez vos informations publiques.</p>
           </div>
-          <button id="btn-save-prof" class="btn btn-primary">Enregistrer</button>
+          <button id="btn-save-prof" class="btn btn-primary w-full sm:w-auto">Enregistrer</button>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div class="card p-6 text-center space-y-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div class="card p-4 sm:p-6 text-center space-y-4">
             <div class="relative inline-block mx-auto group">
               <img id="p-avatar-img-prev" src="${user.avatar}" class="avatar avatar-xl mx-auto border-4 border-sky-400 object-cover">
               <button type="button" id="p-btn-pick-avatar" class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-sky-400 hover:bg-sky-300 text-slate-950 flex items-center justify-center shadow-lg border-2 border-slate-900 cursor-pointer transition-all hover:scale-110" title="Changer photo de profil">
@@ -4394,22 +4428,22 @@
             </div>
           </div>
 
-          <div class="lg:col-span-2 card p-6 space-y-4">
+          <div class="lg:col-span-2 card p-4 sm:p-6 space-y-4">
             <h3 class="font-bold text-lg text-white border-b border-white/10 pb-2">Informations Profil</h3>
             <form id="form-prof" class="space-y-4">
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="form-group"><label class="form-label">Nom complet</label><input type="text" id="p-name" class="form-input" value="${user.name}"></div>
                 <div class="form-group"><label class="form-label">Spécialité / Métier</label><input type="text" id="p-role" class="form-input" value="${user.role}"></div>
               </div>
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="form-group"><label class="form-label">Ville</label><input type="text" id="p-city" class="form-input" value="${user.city}"></div>
                 <div class="form-group"><label class="form-label">Pays</label><input type="text" id="p-country" class="form-input" value="${user.country}"></div>
               </div>
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="form-group"><label class="form-label">Adresse Email</label><input type="email" id="p-email" class="form-input" value="${user.email}"></div>
                 <div class="form-group"><label class="form-label">Numéro WhatsApp / Téléphone</label><input type="tel" id="p-phone" class="form-input" value="${user.whatsapp || user.phone || ''}"></div>
               </div>
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="form-group"><label class="form-label">Pseudo Instagram (ex: @mon.studio)</label><input type="text" id="p-instagram" class="form-input" placeholder="julienmercer_studio" value="${user.instagram || ''}"></div>
                 <div class="form-group"><label class="form-label">Site Portfolio</label><input type="url" id="p-website" class="form-input" value="${user.website || ''}"></div>
               </div>
@@ -4419,7 +4453,7 @@
                 <label class="form-label font-bold text-sky-400 flex items-center gap-2">
                   <i data-lucide="image" class="w-4 h-4"></i> Aperçu travaux récents (Max 3 photos)
                 </label>
-                <div class="grid grid-cols-3 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   ${[0, 1, 2].map(idx => {
                     const photoUrl = user.portfolio?.[idx] || '';
                     return `
